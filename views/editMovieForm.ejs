@@ -1,0 +1,42 @@
+<% // create a list of javascript files to have the header load %>
+<% var js_include = ['edit_movie.js']; %>
+<% include header %>
+
+<!-- Note that this is a post -->
+<form id="edit_movie_form" action="<%= action %>">
+    <table id="login">
+        <tr><td>Movie Name:</td>
+            <td><input type="hidden" id="MovieID" name="MovieID" value= <%= rs[0].MovieID %> /></td>
+            <td><input type="text" id="MovieName" name="MovieName" value= <%= rs[0].MovieName %> /></td>
+        </tr>
+        <tr><td>Year Released:</td>
+            <td><input type="text" id="YearReleased" name="YearReleased" value= <%= rs[0].YearReleased %> /></td>
+        </tr>
+</table>
+
+    <label for="Rating">Ratings</label>
+    <select id="Rating" name="Rating" value= <% rs[0].Rating %> >
+        <option value="<%= 'G' %>"> <%= 'G' %>
+        </option>
+        <option value="<%= 'PG' %>"> <%= 'PG' %>
+        </option>
+        <option value="<%= 'PG-13' %>"> <%= 'PG-13' %>
+        </option>
+        <option value="<%= 'R' %>"> <%= 'R' %>
+        </option>
+    </select>
+    <br />
+
+    <table id="login1">
+        <tr><td>Genre:</td>
+            <td><input type="text" id="Genre" name="Genre" value= <% rs[0].Genre %> /></td>
+        </tr>
+    </table>
+
+    <!-- not that we use a button here and not submit -->
+    <input type="button" id="editMovieBtn" value="Update" />
+</form>
+
+<div id="output" style="margin:10px;display:none"></div>
+
+<% include footer %>

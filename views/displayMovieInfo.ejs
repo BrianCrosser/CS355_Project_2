@@ -1,0 +1,14 @@
+<% include header %>
+
+<% if(rs.length > 0)
+{ %>
+    Movie Name: <%= rs[0].MovieName %> <br />
+    Year Released: <%= rs[0].YearReleased %> <br />
+    Rating: <%= rs[0].Rating %> <br />
+    Genre: <%= rs[0].Genre %> <br />
+    <br />
+<% } else { %>
+    No movie matched this Title id <%= movieid %>.
+<% } %>
+
+<% include footer %>
