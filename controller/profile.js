@@ -5,9 +5,9 @@ var db   = require('../models/db');
 
 /* View all students in a <table> */
 router.get('/all', function (req, res) {
-    db.GetAllUser(function (err, result) {
+    db.GetAllProfile(function (err, result) {
             if (err) throw err;
-            res.render('displayUser1Table.ejs', {rs: result});
+            res.render('displayProfileTable.ejs', {rs: result});
         }
     );
 });
@@ -15,16 +15,16 @@ router.get('/all', function (req, res) {
 
 /* View a single students information */
 router.get('/', function (req, res) {
-    if(req.query.user1id == null) {
-        res.redirect('/user1/all');
+    if(req.query.userid == null) {
+        res.redirect('/profile/all');
     }
     else {
-        db.GetByIDUser(req.query.user1id, function (err, result)
+        db.GetByIDProfile(req.query.userid, function (err, result)
         {
             if (err) throw err;
 
            // Send result to the template along with the original student id in case there were no results
-           res.render('displayUser1Info.ejs', {rs: result, user1id: req.query.user1id});
+           res.render('displayProfileInfo.ejs', {rs: result, userid: req.query.userid});
 
         });
     }
@@ -32,21 +32,21 @@ router.get('/', function (req, res) {
 
 // Create Student Form
 router.get('/create', function(req, res){
-    res.render('createUser1Form.ejs', {action: '/user1/create'});
+    res.render('createProfileForm.ejs', {action: '/profile/create'});
 });
 
 // Save Student information
 router.post('/create', function (req, res) {
-    db.InsertUser( req.body, function (err, result) {
+    db.InsertProfile( req.body, function (err, result) {
             if (err) {
                 throw err;
             }
             console.log(result);
 
             if(typeof result.insertId !== 'undefined') {
-                db.GetByIDUser(result.insertId, function(err, result){
+                db.GetByIDProfile(result.insertId, function(err, result){
 
-                    res.render('displayUser1InfoSnippet.ejs', {rs: result, user1id: result.insertId});
+                    res.render('displayProfileInfoSnippet.ejs', {rs: result, userid: result.insertId});
 
                 });
             }
@@ -60,27 +60,27 @@ router.post('/create', function (req, res) {
 // Create Student Form
 router.get('/edit', function(req, res)
 {
-    db.GetByIDUser(req.query.user1id, function (err, result)
+    db.GetByIDProfile(req.query.userid, function (err, result)
     {
         if (err) throw err;
 
         // Send result to the template along with the original student id in case there were no results
-        res.render('editUser1Form.ejs', {action: '/user1/edit', rs: result, user1id: req.query.user1id});
+        res.render('editProfileForm.ejs', {action: '/profile/edit', rs: result, userid: req.query.userid});
     });
 });
 
 // Save Student information
 router.post('/edit', function (req, res) {
-    db.UpdateUser( req.body, function (err, result) {
+    db.UpdateProfile( req.body, function (err, result) {
             if (err) {
                 throw err;
             }
             console.log(req.body);
 
-            if(typeof req.body !== 'undefined') {
-                db.GetByIDUser(req.body.UserID, function(err, result){
+            if(typeof req.body != 'undefined') {
+                db.GetByIDProfile(req.body.UserID, function(err, result){
 
-                    res.render('displayUser1InfoSnippet.ejs', {rs: result, user1id: req.body.UserID});
+                    res.render('displayProfileInfoSnippet.ejs', {rs: result, user1id: req.body.UserID});
 
                 });
             }
@@ -95,7 +95,7 @@ router.post('/edit', function (req, res) {
 router.get('/delete', function (req, res) {
     console.log(req.query);
 
-    db.DeleteUser( req.query, function (err, result)
+    db.DeleteProfile( req.query, function (err, result)
     {
         if (err) {
             throw err;

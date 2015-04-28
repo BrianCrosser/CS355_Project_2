@@ -1,0 +1,14 @@
+<% include header %>
+
+<% if(rs.length > 0)
+{ %>
+    First Name: <%= rs[0].FirstName %> <br />
+    Last Name: <%= rs[0].LastName %> <br />
+    Email: <%= rs[0].Email %> <br />
+<%}
+
+ else { %>
+    No user matched this user id <%= userid %>.
+<% } %>
+
+<% include footer %>

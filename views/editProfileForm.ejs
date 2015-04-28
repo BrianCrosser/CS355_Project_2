@@ -1,0 +1,25 @@
+<% // create a list of javascript files to have the header load %>
+<% var js_include = ['edit_profile.js']; %>
+<% include header %>
+
+<!-- Note that this is a post -->
+<form id="edit_profile_form" action="<%= action %>">
+    <table id="login">
+        <td><input type="hidden" id="UserID" name="UserID" value= <%= userid %> /></td>
+         <tr><td>First Name:</td>
+            <td><input type="text" id="FirstName" name="FirstName" value= <%= rs[0].FirstName %> /></td>
+        </tr>
+        <tr><td>Last Name:</td>
+            <td><input type="text" id="LastName" name="LastName" value= <%= rs[0].LastName %> /></td>
+        </tr>
+        <tr><td>Email:</td>
+            <td><input type="text" id="Email" name="Email" value= <%= rs[0].Email %> /></td>
+        </tr>
+    </table>
+    <!-- not that we use a button here and not submit -->
+    <input type="button" id="editProfileBtn" value="Update" />
+</form>
+
+<div id="output" style="margin:10px;display:none"></div>
+
+<% include footer %>

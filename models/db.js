@@ -251,8 +251,8 @@ exports.InsertRating = function(rating1_info, callback) {
     );
 }
 
-exports.GetAllUser = function(callback) {
-    connection.query('select * from User1',
+exports.GetAllProfile = function(callback) {
+    connection.query('select * from Profile',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -265,9 +265,9 @@ exports.GetAllUser = function(callback) {
     );
 }
 
-exports.GetAllViewUser = function(callback) {
+exports.GetAllViewProfile = function(callback) {
     // CREATE VIEW StudentsView AS SELECT * FROM Students;
-    connection.query('select * from User1;',
+    connection.query('select * from Profile;',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -280,9 +280,9 @@ exports.GetAllViewUser = function(callback) {
 }
 
 
-exports.GetByIDUser = function(user1id, callback) {
-    console.log(user1id);
-    var query = 'select * from User1 WHERE UserID=' + user1id;
+exports.GetByIDProfile = function(userid, callback) {
+    console.log(userid);
+    var query = 'select * from Profile WHERE UserID=' + userid;
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -296,9 +296,9 @@ exports.GetByIDUser = function(user1id, callback) {
     );
 }
 
-exports.InsertUser = function(user1_info, callback) {
-    console.log(user1_info);
-    var query = 'INSERT INTO User1 (Username, Firstname, Lastname) VALUES ("' + user1_info.Username + '", "' + user1_info.Firstname + '", "' + user1_info.Lastname + '")';
+exports.InsertProfile = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'INSERT INTO Profile (FirstName, LastName, Email) VALUES ("' + user_info.FirstName + '", "' + user_info.LastName + '", "' + user_info.Email + '")';
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -312,9 +312,9 @@ exports.InsertUser = function(user1_info, callback) {
     );
 }
 
-exports.UpdateUser = function(user1_info, callback) {
-    console.log(user1_info);
-    var query = 'UPDATE User1 SET Username="' + user1_info.Username + '", Firstname="' + user1_info.Firstname + '",  LastName="' + user1_info.Lastname + '" WHERE UserID=' + user1_info.UserID + ';';
+exports.UpdateProfile = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'UPDATE Profile SET Email="' + user_info.Email + '", FirstName="' + user_info.FirstName + '",  LastName="' + user_info.LastName + '" WHERE UserID=' + user_info.UserID + ';';
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -328,9 +328,9 @@ exports.UpdateUser = function(user1_info, callback) {
     );
 }
 
-exports.DeleteUser = function(user1_info, callback) {
-    console.log(user1_info);
-    var query = 'DELETE FROM User1 WHERE UserID=' + user1_info.user1id + ';';
+exports.DeleteProfile = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'DELETE FROM Profile WHERE UserID=' + user_info.userid + ';';
     console.log(query);
     connection.query(query,
         function (err, result) {

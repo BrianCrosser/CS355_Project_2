@@ -1,13 +1,14 @@
 $(document).ready(function () {
-    $('#createUser1Btn').click( function(){
+    $('#editProfileBtn').click( function(){
         var payload = {
-            Username: $('#Username').val(),
-            Firstname: $('#Firstname').val(),
-            Lastname: $('#Lastname').val()
+            UserID: $('#UserID').val(),
+            FirstName: $('#FirstName').val(),
+            LastName: $('#LastName').val(),
+            Email: $('#Email').val()
         };
 
         $.ajax({
-            url: $("#create_user1_form").attr("action"),
+            url: $("#edit_profile_form").attr("action"),
             type: "POST",
             contentType: "application/json",
             processData: false,

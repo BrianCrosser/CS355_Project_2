@@ -1,0 +1,8 @@
+<h2>User Inserted</h2>
+<% if(rs.length > 0) { %>
+First Name: <%= rs[0].FirstName %> <br />
+Last Name: <%= rs[0].LastName %> <br />
+Eamil: <%= rs[0].Email %> <br />
+<% } else { %>
+    No users matched this user id <%= userid %>.
+<% } %>

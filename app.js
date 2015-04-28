@@ -8,7 +8,7 @@ var routes = require('./controller/index');
 var movie_route  = require('./controller/movie');
 var genre1_route  = require('./controller/genre1');
 var rating1_route  = require('./controller/rating1');
-var user1_route  = require('./controller/user1');
+var profile_route  = require('./controller/profile');
 
 // initialize express web application framework
 // http://expressjs.com/
@@ -26,14 +26,14 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 // example of a global variable that can be passed to a template
-app.set('subtitle', 'Lab 18');
+app.set('subtitle', 'Project 2');
 
 //configure routes
 app.use('/', routes);
 app.use('/movie', movie_route);
 app.use('/genre1', genre1_route);
 app.use('/rating1', rating1_route);
-app.use('/user1', user1_route);
+app.use('/profile', profile_route);
 
 // configure static directory for javascript, css, etc.
 app.use(express.static('public'));

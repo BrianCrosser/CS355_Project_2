@@ -1,0 +1,26 @@
+<% include header %>
+
+    <div>
+    <% if(rs.length > 0) { %>
+        <table border="1">
+            <tr><th>First Name</th><th>Last Name</th></tr>
+            <% for (var i=0; rs.length > i; i++) { %>
+                <tr>
+                 <td><a href="/profile/?userid=<%= rs[i].UserID %>"> <%= rs[i].FirstName %></a></td>
+                 <td><a href="/profile/?userid=<%= rs[i].UserID %>"> <%= rs[i].LastName %></a></td>
+                 <td><a href="/profile/edit?userid=<%= rs[i].UserID %>"> <%= "Edit" %></a></td>
+                 <td><a href="/profile/delete?userid=<%= rs[i].UserID %>"> <%= "Delete" %></a></td>
+
+                </tr>
+            <% } %>
+        </table>
+    <% } else { %>
+         No users are entered into the Profile database table.
+    <% } %>
+    </div>
+
+    <div style="margin-top:10px;">
+        <a href="/profile/create">Create New User</a>
+    </div>
+
+<% include footer %>
