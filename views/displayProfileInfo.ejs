@@ -5,6 +5,27 @@
     First Name: <%= rs[0].FirstName %> <br />
     Last Name: <%= rs[0].LastName %> <br />
     Email: <%= rs[0].Email %> <br />
+
+    <br /><hr/><br />
+
+    <div>
+        <% if(rs1.length > 0) { %>
+        <table border="1">
+            <tr><th>User</th><th>Friend</th></tr>
+            <% for (var i=0; rs1.length > i; i++) { %>
+            <tr>
+                <td><%= rs1[i].UserFirstName %><%= rs1[i].UserLastName %></td>
+                <td><%= rs1[i].FriendFirstName %><%= rs1[i].FriendLastName %></td>
+            </tr>
+            <% } %>
+        </table>
+        <% } else { %>
+            No friendships exists.
+        <% } %>
+    </div>
+
+    <td><a href="/friends/create?userid=<%= userid %>"> <%= 'Create New Friendship' %></a></td><br />
+
 <%}
 
  else { %>

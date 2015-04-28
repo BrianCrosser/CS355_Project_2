@@ -51,7 +51,7 @@ exports.GetByIDMovie = function(movieid, callback) {
 
 exports.InsertMovie = function(movie_info, callback) {
     console.log(movie_info);
-    var query = 'INSERT INTO Movie (Title) VALUES ("' + movie_info.MovieName + '", ' + YearReleased + ', ' + Rating + ', "' + Genre + '")';
+    var query = 'INSERT INTO Movie (MovieName, YearReleased, Rating, Genre) VALUES ("' + movie_info.MovieName + '", ' + movie_info.YearReleased + ', "' + movie_info.Rating + '", "' + movie_info.Genre + '")';
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -67,7 +67,7 @@ exports.InsertMovie = function(movie_info, callback) {
 
 exports.UpdateMovie = function(movie_info, callback) {
     console.log(movie_info);
-    var query = 'UPDATE Movie SET Title="' + movie_info.MovieName + '", YearReleased=' + movie_info.YearReleased + ', Rating=' + movie_info.Rating + ', Genre="' + movie_info.Genre + '" WHERE MovieID=' + movie_info.MovieID + ';';
+    var query = 'UPDATE Movie SET MovieName="' + movie_info.MovieName + '", YearReleased=' + movie_info.YearReleased + ', Rating="' + movie_info.Rating + '", Genre="' + movie_info.Genre + '" WHERE MovieID=' + movie_info.MovieID + ';';
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -84,160 +84,6 @@ exports.UpdateMovie = function(movie_info, callback) {
 exports.DeleteMovie = function(movie_info, callback) {
     console.log(movie_info);
     var query = 'DELETE FROM Movie WHERE MovieID=' + movie_info.movieid + ';';
-    console.log(query);
-    connection.query(query,
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return
-            }
-            callback(false, result);
-        }
-    );
-}
-
-exports.GetAllGenre = function(callback) {
-    connection.query('select * from Genre1',
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            console.log(result);
-            callback(false, result);
-        }
-    );
-}
-
-exports.GetAllViewGenre = function(callback) {
-    // CREATE VIEW StudentsView AS SELECT * FROM Students;
-    connection.query('select * from Genre1',
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            callback(false, result);
-        }
-    );
-}
-
-
-exports.GetByIDGenre = function(genre1id, callback) {
-    console.log(genre1id);
-    var query = 'select Title, Genre from Genre1 JOIN Movie1 ON Genre1.MovieID=Movie1.MovieID WHERE GenreID=' + genre1id;
-    console.log(query);
-    connection.query(query,
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            callback(false, result);
-        }
-    );
-}
-
-exports.GetByMovieIDGenre = function(movie1id, callback) {
-    console.log(movie1id);
-    var query = 'select Genre from Genre1 WHERE MovieID=' + movie1id;
-    console.log(query);
-    connection.query(query,
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            callback(false, result);
-        }
-    );
-}
-
-exports.InsertGenre = function(genre1_info, callback) {
-    console.log(genre1_info);
-    var query = 'INSERT INTO Genre1(MovieID, Genre) VALUES (' + genre1_info.MovieID + ', "' + genre1_info.Genre + '")';
-    console.log(query);
-    connection.query(query,
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return
-            }
-            callback(false, result);
-        }
-    );
-}
-
-exports.GetAllRating = function(callback) {
-    connection.query('select * from Rating1',
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            console.log(result);
-            callback(false, result);
-        }
-    );
-}
-
-exports.GetAllViewRating = function(callback) {
-    // CREATE VIEW StudentsView AS SELECT * FROM Students;
-    connection.query('select * from Rating1',
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            callback(false, result);
-        }
-    );
-}
-
-
-exports.GetByIDRating = function(rating1id, callback) {
-    console.log(rating1id);
-    var query = 'select Title, Username, Rating from Rating1 JOIN Movie1 ON Rating1.MovieID=Movie1.MovieID JOIN User1 ON User1.UserID=Rating1.UserID WHERE RatingID=' + rating1id;
-    console.log(query);
-    connection.query(query,
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            callback(false, result);
-        }
-    );
-}
-
-exports.GetByMovieIDRating = function(movie1id, callback) {
-    console.log(movie1id);
-    var query = 'select Username, Rating from Rating1 JOIN User1 ON User1.UserID=Rating1.UserID WHERE MovieID=' + movie1id;
-    console.log(query);
-    connection.query(query,
-        function (err, result) {
-            if(err) {
-                console.log(err);
-                callback(true);
-                return;
-            }
-            callback(false, result);
-        }
-    );
-}
-
-exports.InsertRating = function(rating1_info, callback) {
-    console.log(rating1_info);
-    var query = 'INSERT INTO Rating1(MovieID, UserID, Rating) VALUES (' + rating1_info.MovieID + ', ' + rating1_info.UserID + ', ' + rating1_info.Rating + ')';
     console.log(query);
     connection.query(query,
         function (err, result) {
@@ -331,6 +177,83 @@ exports.UpdateProfile = function(user_info, callback) {
 exports.DeleteProfile = function(user_info, callback) {
     console.log(user_info);
     var query = 'DELETE FROM Profile WHERE UserID=' + user_info.userid + ';';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllFriends = function(callback) {
+    connection.query('select * from Friends',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            console.log(result);
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllViewFriends = function(callback) {
+    // CREATE VIEW StudentsView AS SELECT * FROM Students;
+    connection.query('select * from Friends;',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+
+exports.GetByIDFriends = function(userid, callback) {
+    console.log(userid);
+    var query = 'CALL GetFriend(' + userid + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.InsertFriends = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'CALL InsertFriend(' + user_info.UserID + ', ' + user_info.FriendID + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.DeleteFriends = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'CALL DeleteFriend(' + user_info.UserID + ', ' + user_info.FriendID + ')';
     console.log(query);
     connection.query(query,
         function (err, result) {

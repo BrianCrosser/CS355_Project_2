@@ -5,8 +5,8 @@
 <!-- Note that this is a post -->
 <form id="edit_movie_form" action="<%= action %>">
     <table id="login">
+        <tr><td><input type="hidden" id="MovieID" name="MovieID" value= <%= rs[0].MovieID %> /></td><tr />
         <tr><td>Movie Name:</td>
-            <td><input type="hidden" id="MovieID" name="MovieID" value= <%= rs[0].MovieID %> /></td>
             <td><input type="text" id="MovieName" name="MovieName" value= <%= rs[0].MovieName %> /></td>
         </tr>
         <tr><td>Year Released:</td>
@@ -27,9 +27,8 @@
     </select>
     <br />
 
-    <table id="login1">
-        <tr><td>Genre:</td>
-            <td><input type="text" id="Genre" name="Genre" value= <% rs[0].Genre %> /></td>
+    <tr><td>Genre:</td>
+            <td><input type="text" id="Genre" name="Genre" value= <%= rs[0].Genre %> /></td>
         </tr>
     </table>
 

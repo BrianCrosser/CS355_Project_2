@@ -1,0 +1,31 @@
+<% // create a list of javascript files to have the header load %>
+<% var js_include = ['create_friends.js']; %>
+<% include header %>
+
+<!-- Note that this is a post -->
+<form id="create_friends_form" action="<%= action %>">
+    <% if(rs.length > 0) { %>
+    <label for="FriendID">Friends</label>
+
+    <select id="FriendID" name="FriendID">
+        <% for (var i=0; rs.length > i; i++) { %>
+        <option value="<%= rs[i].UserID %>">
+            <%= rs[i].FirstName%> <%= rs[i].LastName %>
+        </option>
+        <% } %>
+    </select>
+    <br />
+    <td><input type="hidden" id="UserID" name="UserID" value= <%= userid %> /></td>
+
+    <!-- not that we use a button here and not submit -->
+    <input type="button" id="createFriendsBtn" value="Create" />
+</form>
+
+<% }   else { %>
+The table does not contain any records.
+<% } %>
+<br />
+
+<div id="output" style="margin:10px;display:none"></div>
+
+<% include footer %>

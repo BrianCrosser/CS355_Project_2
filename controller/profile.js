@@ -22,10 +22,11 @@ router.get('/', function (req, res) {
         db.GetByIDProfile(req.query.userid, function (err, result)
         {
             if (err) throw err;
+            db.GetByIDFriends(req.query.userid, function(err, result1) {
 
-           // Send result to the template along with the original student id in case there were no results
-           res.render('displayProfileInfo.ejs', {rs: result, userid: req.query.userid});
-
+                // Send result to the template along with the original student id in case there were no results
+                res.render('displayProfileInfo.ejs', {rs: result, userid: req.query.userid, rs1: result1[0]});
+            });
         });
     }
 });
