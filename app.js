@@ -9,6 +9,8 @@ var movie_route  = require('./controller/movie');
 var friends_route  = require('./controller/friends');
 var profile_route  = require('./controller/profile');
 var show_route  = require('./controller/show');
+var movieviewer_route  = require('./controller/movieviewer');
+var tvviewer_route  = require('./controller/tvviewer');
 
 // initialize express web application framework
 // http://expressjs.com/
@@ -34,6 +36,8 @@ app.use('/movie', movie_route);
 app.use('/friends', friends_route);
 app.use('/profile', profile_route);
 app.use('/show', show_route);
+app.use('/movieviewer', movieviewer_route);
+app.use('/tvviewer', tvviewer_route);
 
 // configure static directory for javascript, css, etc.
 app.use(express.static('public'));

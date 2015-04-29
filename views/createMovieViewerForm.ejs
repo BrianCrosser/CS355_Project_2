@@ -1,0 +1,31 @@
+<% // create a list of javascript files to have the header load %>
+<% var js_include = ['create_movieviewer.js']; %>
+<% include header %>
+
+<!-- Note that this is a post -->
+<form id="create_movieviewer_form" action="<%= action %>">
+    <% if(rs.length > 0) { %>
+    <label for="MovieID">Movies</label>
+
+    <select id="MovieID" name="MovieID">
+        <% for (var i=0; rs.length > i; i++) { %>
+        <option value="<%= rs[i].MovieID %>">
+            <%= rs[i].MovieName%>
+        </option>
+        <% } %>
+    </select>
+    <br />
+    <td><input type="hidden" id="UserID" name="UserID" value= <%= userid %> /></td>
+
+    <!-- not that we use a button here and not submit -->
+    <input type="button" id="createMovieViewerBtn" value="Create" />
+</form>
+
+<% }   else { %>
+The table does not contain any records.
+<% } %>
+<br />
+
+<div id="output" style="margin:10px;display:none"></div>
+
+<% include footer %>

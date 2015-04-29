@@ -9,26 +9,65 @@
     <br /><hr/><br />
 
     <div>
-        <% if(rs1.length > 0) { %>
+    <% if(rs1.length > 0) { %>
         <table border="1">
-            <tr><th>User</th><th>Friend</th></tr>
-            <% for (var i=0; rs1.length > i; i++) { %>
+        <tr><th>Friend</th></tr>
+        <% for (var i=0; rs1.length > i; i++) { %>
             <tr>
-                <td><%= rs1[i].UserFirstName %><%= rs1[i].UserLastName %></td>
-                <td><%= rs1[i].FriendFirstName %><%= rs1[i].FriendLastName %></td>
+                <td><a href="/profile/?userid=<%= rs1[i].FriendID %>"><%= rs1[i].FriendFirstName %><%= rs1[i].FriendLastName %></a></td>
+                <td><a href="/friends/delete?userid=<%= rs1[i].UserID %>&friendid=<%=rs1[i].FriendID%>"> <%= "Delete" %></a></td>
             </tr>
-            <% } %>
-        </table>
-        <% } else { %>
-            No friendships exists.
         <% } %>
+        </table>
+    <% } else { %>
+        No friendships exists.
+    <% } %>
     </div>
 
     <td><a href="/friends/create?userid=<%= userid %>"> <%= 'Create New Friendship' %></a></td><br />
 
-<%}
+    <br /><hr/><br />
 
- else { %>
+    <div>
+    <% if(rs2.length > 0) { %>
+        <table border="1">
+        <tr><th>Movies Watched</th></tr>
+        <% for (var i=0; rs2.length > i; i++) { %>
+            <tr>
+                <td><a href="/movie/?movieid=<%= rs2[i].MovieID %>"> <%= rs2[i].MovieName %></a></td>
+                <td><a href="/movieviewer/delete?userid=<%=rs2[i].UserID%>&movieid=<%=rs2[i].MovieID%>"> <%= "Delete" %></a></td>
+            </tr>
+        <% } %>
+        </table>
+
+        <% } else { %>
+            No movies have been watched.
+        <% }  %>
+    </div>
+    <td><a href="/movieviewer/create?userid=<%= userid %>"> <%= 'Watch New Movie' %></a></td><br />
+
+    <br /><hr/><br />
+
+    <div>
+    <% if(rs3.length > 0) { %>
+        <table border="1">
+        <tr><th>Shows Watched</th></tr>
+        <% for (var i=0; rs3.length > i; i++) { %>
+            <tr>
+                <td><a href="/show/?showid=<%= rs3[i].TVShowID %>"> <%= rs3[i].ShowName %></a></td>
+                <td><a href="/tvviewer/delete?userid=<%=rs3[i].UserID%>&showid=<%=rs3[i].TVShowID%>"> <%= "Delete" %></a></td>
+            </tr>
+        <% } %>
+        </table>
+
+    <% } else { %>
+        No shows have been watched.
+    <% }  %>
+    </div>
+
+    <td><a href="/tvviewer/create?userid=<%= userid %>"> <%= 'Watch New Show' %></a></td><br />
+
+<%} else { %>
     No user matched this user id <%= userid %>.
 <% } %>
 

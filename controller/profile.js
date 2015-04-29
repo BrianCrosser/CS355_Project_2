@@ -22,10 +22,24 @@ router.get('/', function (req, res) {
         db.GetByIDProfile(req.query.userid, function (err, result)
         {
             if (err) throw err;
-            db.GetByIDFriends(req.query.userid, function(err, result1) {
+            db.GetByIDFriends(req.query.userid, function(err, result1)
+            {
+                db.GetByIDMovieViewer(req.query.userid, function (err, result2)
+                {
+                    if (err) throw err;
+                    db.GetByIDTVViewer(req.query.userid, function (err, result3) {
+                        if (err) throw err;
 
-                // Send result to the template along with the original student id in case there were no results
-                res.render('displayProfileInfo.ejs', {rs: result, userid: req.query.userid, rs1: result1[0]});
+                        // Send result to the template along with the original student id in case there were no results
+                        res.render('displayProfileInfo.ejs', {
+                            rs: result,
+                            userid: req.query.userid,
+                            rs1: result1[0],
+                            rs2: result2[0],
+                            rs3: result3[0]
+                        });
+                    });
+                });
             });
         });
     }

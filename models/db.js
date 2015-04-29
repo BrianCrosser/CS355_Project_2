@@ -346,7 +346,161 @@ exports.InsertFriends = function(user_info, callback) {
 
 exports.DeleteFriends = function(user_info, callback) {
     console.log(user_info);
-    var query = 'CALL DeleteFriend(' + user_info.UserID + ', ' + user_info.FriendID + ')';
+    var query = 'CALL DeleteFriend(' + user_info.userid + ', ' + user_info.friendid + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllMovieViewer = function(callback) {
+    connection.query('select * from MovieViewer',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            console.log(result);
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllViewMovieViewer = function(callback) {
+    // CREATE VIEW StudentsView AS SELECT * FROM Students;
+    connection.query('select * from MovieViewer;',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+
+exports.GetByIDMovieViewer = function(userid, callback) {
+    console.log(userid);
+    var query = 'CALL GetMovieViewer(' + userid + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.InsertMovieViewer = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'CALL InsertMovieViewer(' + user_info.UserID + ', ' + user_info.MovieID + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.DeleteMovieViewer = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'CALL DeleteMovieViewer(' + user_info.userid + ', ' + user_info.movieid + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllTVViewer = function(callback) {
+    connection.query('select * from TVViewer',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            console.log(result);
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllViewTVViewer = function(callback) {
+    // CREATE VIEW StudentsView AS SELECT * FROM Students;
+    connection.query('select * from TVViewer;',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+
+exports.GetByIDTVViewer = function(userid, callback) {
+    console.log(userid);
+    var query = 'CALL GetTVViewer(' + userid + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.InsertTVViewer = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'CALL InsertTVViewer(' + user_info.UserID + ', ' + user_info.TVShowID + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.DeleteTVViewer = function(user_info, callback) {
+    console.log(user_info);
+    var query = 'CALL DeleteTVViewer(' + user_info.userid + ', ' + user_info.showid + ')';
     console.log(query);
     connection.query(query,
         function (err, result) {
