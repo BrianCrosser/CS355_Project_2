@@ -1,0 +1,58 @@
+<% // create a list of javascript files to have the header load %>
+<% var js_include = ['edit_show.js']; %>
+<% include header %>
+
+<!-- Note that this is a post -->
+<form id="edit_show_form" action="<%= action %>">
+    <table id="login">
+        <tr><td><input type="hidden" id="ShowID" name="ShowID" value= <%= rs[0].ShowID %> /></td><tr />
+        <tr><td>Show Name:</td>
+            <td><input type="text" id="ShowName" name="ShowName" value= <%= rs[0].ShowName %> /></td>
+        </tr>
+        <tr><td>Seasons:</td>
+            <td><input type="text" id="Seasons" name="Seasons" value= <%= rs[0].Seasons %> /></td>
+        </tr>
+</table>
+
+    <label for="Rating">Ratings</label>
+    <select id="Rating" name="Rating" value= <% rs[0].Rating %> >
+        <option value="<%= 'Y' %>"> <%= 'Y' %>
+        </option>
+        <option value="<%= 'G' %>"> <%= 'G' %>
+        </option>
+        <option value="<%= 'PG' %>"> <%= 'PG' %>
+        </option>
+        <option value="<%= '14' %>"> <%= '14' %>
+        </option>
+        <option value="<%= 'MA' %>"> <%= 'MA' %>
+        </option>
+    </select>
+    <br />
+
+    <tr><td>Genre:</td>
+            <td><input type="text" id="Genre" name="Genre" value= <%= rs[0].Genre %> /></td>
+        </tr>
+
+    <br />
+    <label for="AirTime">AirTime</label>
+    <select id="AirTime" name="AirTime">
+        <option value="<%= 'Summer' %>"> <%= 'Summer' %>
+        </option>
+        <option value="<%= 'Fall' %>"> <%= 'Fall' %>
+        </option>
+        <option value="<%= 'Winter' %>"> <%= 'Winter' %>
+        </option>
+        <option value="<%= 'Spring' %>"> <%= 'Spring' %>
+        </option>
+    </select>
+    <br />
+
+    </table>
+
+    <!-- not that we use a button here and not submit -->
+    <input type="button" id="editShowBtn" value="Update" />
+</form>
+
+<div id="output" style="margin:10px;display:none"></div>
+
+<% include footer %>

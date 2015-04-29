@@ -8,6 +8,7 @@ var routes = require('./controller/index');
 var movie_route  = require('./controller/movie');
 var friends_route  = require('./controller/friends');
 var profile_route  = require('./controller/profile');
+var show_route  = require('./controller/show');
 
 // initialize express web application framework
 // http://expressjs.com/
@@ -32,6 +33,7 @@ app.use('/', routes);
 app.use('/movie', movie_route);
 app.use('/friends', friends_route);
 app.use('/profile', profile_route);
+app.use('/show', show_route);
 
 // configure static directory for javascript, css, etc.
 app.use(express.static('public'));

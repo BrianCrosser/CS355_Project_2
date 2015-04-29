@@ -97,6 +97,99 @@ exports.DeleteMovie = function(movie_info, callback) {
     );
 }
 
+exports.GetAllShow = function(callback) {
+    connection.query('select * from TV',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            console.log(result);
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetAllViewShow = function(callback) {
+    // CREATE VIEW StudentsView AS SELECT * FROM Students;
+    connection.query('select * from TV;',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+
+exports.GetByIDShow = function(showid, callback) {
+    console.log(showid);
+    var query = 'select * from TV WHERE ShowID=' + showid;
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.InsertShow = function(show_info, callback) {
+    console.log(show_info);
+    var query = 'INSERT INTO TV (ShowName, Seasons, Rating, Genre, AirTime) VALUES ("' + show_info.ShowName + '", ' + show_info.Seasons + ', "' + show_info.Rating + '", "' + show_info.Genre + '", "' + show_info.AirTime + '")';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.UpdateShow = function(show_info, callback) {
+    console.log(show_info);
+    var query = 'UPDATE TV SET ShowName="' + show_info.ShowName + '", Seasons=' + show_info.Seasons + ', Rating="' + show_info.Rating + '", Genre="' + show_info.Genre + '", AirTime="' + show_info.AirTime + '" WHERE ShowID=' + show_info.ShowID + ';';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.DeleteShow = function(show_info, callback) {
+    console.log(show_info);
+    var query = 'DELETE FROM TV WHERE ShowID=' + show_info.showid + ';';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
 exports.GetAllProfile = function(callback) {
     connection.query('select * from Profile',
         function (err, result) {

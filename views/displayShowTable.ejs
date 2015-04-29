@@ -1,0 +1,25 @@
+<% include header %>
+
+    <div>
+    <% if(rs.length > 0) { %>
+        <table border="1">
+            <tr><th>Show Name</th></tr>
+            <% for (var i=0; rs.length > i; i++) { %>
+                <tr>
+                 <td><a href="/show/?showid=<%= rs[i].ShowID %>"> <%= rs[i].ShowName %></a></td>
+                 <td><a href="/show/edit?showid=<%= rs[i].ShowID %>"> <%= "Edit" %></a></td>
+                 <td><a href="/show/delete?showid=<%= rs[i].ShowID %>"> <%= "Delete" %></a></td>
+
+                </tr>
+            <% } %>
+        </table>
+    <% } else { %>
+         No shows are entered into the TV database table.
+    <% } %>
+    </div>
+
+    <div style="margin-top:10px;">
+        <a href="/show/create">Create New Show</a>
+    </div>
+
+<% include footer %>
