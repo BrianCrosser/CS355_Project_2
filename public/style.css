@@ -1,11 +1,16 @@
-table.login {
+
+#table.login {
     border:none;
 }
 
-footer {
+#footer {
     margin-top:20px;
 }
 
-header {
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
     margin-bottom:20px;
 }

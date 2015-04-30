@@ -1,7 +1,51 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Simple NodeJS MVC App</title>
+    <style>
+        #header {
+            background-color:cadetblue;
+            color:white;
+            text-align:center;
+            padding:5px;
+        }
+        #nav {
+            line-height:30px;
+            background-color:#eeeeee;
+            height:300px;
+            width:100px;
+            float:right;
+            padding:5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <h1>The Loop</h1>
+</div>
+
+<div id="nav">
+    <a href="/"> Home</a><br>
+    <a href="/aboutus"> AboutUs </a><br>
+    <a href="/profile/all"> Profiles </a><br>
+    <a href="/movie/all"> Movies </a><br>
+    <a href="/show"> Shows </a><br>
+</div>
+
+</body>
+</html>
+
+
+
+
+<!--<!DOCTYPE HTML>
+<html>
+<head>
+
+
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>The Loop</title>
     <script type="text/javascript" src="/jquery-1.11.2.min.js"></script>
 
     <% if(typeof js_include !== 'undefined') {
@@ -12,8 +56,7 @@
     %>
 </head>
     <body>
-        <% // single lin comment */ %>
-        <% /* block
-              comments
-            */ %>
-        <h1><%= locals.settings.subtitle %>:Simple NodeJS Application</h1>
+        <h2><%= locals.settings.subtitle %></h2>
+    </body>
+
+    -->

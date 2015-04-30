@@ -11,7 +11,7 @@ $(document).ready(function () {
             contentType: "application/json",
             processData: false,
             data: JSON.stringify(payload),
-            complete: function(data) {Window.location.replace('/profile/?userid=' + $('#UserID').val());
+            complete: function(data) {window.location.replace('/profile/?userid=' + $('#UserID').val());
             }
         });
     });
