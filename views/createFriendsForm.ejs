@@ -4,6 +4,7 @@
 
 <!-- Note that this is a post -->
 <form id="create_friends_form" action="<%= action %>">
+    <h1>Create New Friendship</h1><br>
     <% if(rs.length > 0) { %>
     <label for="FriendID">Friends</label>
 
@@ -14,7 +15,7 @@
         </option>
         <% } %>
     </select>
-    <br />
+    <br><br />
     <td><input type="hidden" id="UserID" name="UserID" value= <%= userid %> /></td>
 
     <!-- not that we use a button here and not submit -->

@@ -1,5 +1,5 @@
 <% include header %>
-
+<h1>Profile Information</h1>
 <% if(rs.length > 0)
 { %>
     First Name: <%= rs[0].FirstName %> <br />
@@ -7,7 +7,7 @@
     Email: <%= rs[0].Email %> <br />
 
     <br /><hr/><br />
-
+    <h2>Friends</h2>
     <div>
     <% if(rs1.length > 0) { %>
         <table border="1">
@@ -24,14 +24,14 @@
     <% } %>
     </div>
 
-    <td><a href="/friends/create?userid=<%= userid %>"> <%= 'Create New Friendship' %></a></td><br />
+    <br><td><a href="/friends/create?userid=<%= userid %>"> <%= 'Create New Friendship' %></a></td><br />
 
     <br /><hr/><br />
-
+    <h3>Movies Watched</h3>
     <div>
     <% if(rs2.length > 0) { %>
         <table border="1">
-        <tr><th>Movies Watched</th></tr>
+        <tr><th>Movie Name</th></tr>
         <% for (var i=0; rs2.length > i; i++) { %>
             <tr>
                 <td><a href="/movie/?movieid=<%= rs2[i].MovieID %>"> <%= rs2[i].MovieName %></a></td>
@@ -44,14 +44,14 @@
             No movies have been watched.
         <% }  %>
     </div>
-    <td><a href="/movieviewer/create?userid=<%= userid %>"> <%= 'Watch New Movie' %></a></td><br />
+    <br><td><a href="/movieviewer/create?userid=<%= userid %>"> <%= 'Watch New Movie' %></a></td><br />
 
     <br /><hr/><br />
-
+    <h4>Shows Watched</h4>
     <div>
     <% if(rs3.length > 0) { %>
         <table border="1">
-        <tr><th>Shows Watched</th></tr>
+        <tr><th>Show Name</th></tr>
         <% for (var i=0; rs3.length > i; i++) { %>
             <tr>
                 <td><a href="/show/?showid=<%= rs3[i].TVShowID %>"> <%= rs3[i].ShowName %></a></td>
@@ -65,7 +65,7 @@
     <% }  %>
     </div>
 
-    <td><a href="/tvviewer/create?userid=<%= userid %>"> <%= 'Watch New Show' %></a></td><br />
+    <br><td><a href="/tvviewer/create?userid=<%= userid %>"> <%= 'Watch New Show' %></a></td><br /><br><br>
 
 <%} else { %>
     No user matched this user id <%= userid %>.

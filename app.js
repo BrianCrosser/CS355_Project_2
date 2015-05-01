@@ -5,6 +5,7 @@ var express = require('express'),
 
 // import routes
 var routes = require('./controller/index');
+var aboutus_routes = require('./controller/aboutus');
 var movie_route  = require('./controller/movie');
 var friends_route  = require('./controller/friends');
 var profile_route  = require('./controller/profile');
@@ -32,6 +33,7 @@ app.set('subtitle', 'The Loop');
 
 //configure routes
 app.use('/', routes);
+app.use('/aboutus', aboutus_routes);
 app.use('/movie', movie_route);
 app.use('/friends', friends_route);
 app.use('/profile', profile_route);

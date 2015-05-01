@@ -4,6 +4,7 @@
 
 <!-- Note that this is a post -->
 <form id="create_tvviewer_form" action="<%= action %>">
+    <h1>Watch New Show</h1>
     <% if(rs.length > 0) { %>
     <label for="TVShowID">Shows</label>
 
@@ -18,6 +19,7 @@
     <td><input type="hidden" id="UserID" name="UserID" value= <%= userid %> /></td>
 
     <!-- not that we use a button here and not submit -->
+    <br>
     <input type="button" id="createTVViewerBtn" value="Create" />
 </form>
 
