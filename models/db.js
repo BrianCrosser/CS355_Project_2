@@ -191,7 +191,7 @@ exports.DeleteShow = function(show_info, callback) {
 }
 
 exports.GetAllProfile = function(callback) {
-    connection.query('select * from Profile',
+    connection.query('select * from ProfileInfo',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -206,7 +206,7 @@ exports.GetAllProfile = function(callback) {
 
 exports.GetAllViewProfile = function(callback) {
     // CREATE VIEW StudentsView AS SELECT * FROM Students;
-    connection.query('select * from Profile;',
+    connection.query('select * from ProfileInfo;',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -509,6 +509,20 @@ exports.DeleteTVViewer = function(user_info, callback) {
                 callback(true);
                 return
             }
+            callback(false, result);
+        }
+    );
+}
+
+exports.GetInfo = function(callback) {
+    connection.query('CALL GetInfo()',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            console.log(result);
             callback(false, result);
         }
     );
